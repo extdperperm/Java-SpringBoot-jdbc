@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+	<!--Formulario que desata un ejemplo en el que se realiza una transacción a base de datos.-->
+	<form name="Articulos" method="POST" th:action="@{/nuevo}">
+		<div>
+			<p>
+				<label>Nombre Articulo: </label>
+				<input type="text" name="nombre" size="25" required/>
+			</p>
+			<p>
+				<label>Cod. Barras: </label>
+				<input type="number" name="codbarras" size="15" required/>
+			</p>
+			<p>
+				<label>Descripción: </label>
+				<input type="text" name="descrip" size="25" required/>
+			</p>
+			<p>
+				<label>Tipo de artículo: </label>
+				<input type="text" name="tipoarticulo" size="25" required/>
+			</p>
+		</div>
+		<div><input type="submit" value="Añadir"/></div>
+	</form>
+	<br>
+	<br>
+    <table border="1">
+		<tr>
+			<th>Id</th>
+			<th>CodBarra</th>
+			<th>Nombre</th>
+			<th>Descripción</th>
+			<th>Eliminar</th>
+		</tr>
+		<tr th:each="articulo : ${Articulos}">
+			<td th:text="${articulo.idArticulo}"></td>
+			<td th:text="${articulo.codBarras}"></td>
+			<td th:text="${articulo.nombre}"></td>
+			<td th:text="${articulo.descripcion}"></td>
+			<td><a th:href="@{/eliminar?idArticulo={par1}(par1=${articulo.idArticulo})}">Eliminar</a></td>
+		</tr>
+	</table>
+</body>
+</html>
