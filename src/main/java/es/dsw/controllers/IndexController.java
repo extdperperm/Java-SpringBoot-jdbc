@@ -40,11 +40,11 @@ public class IndexController {
 	}
 	
 	@PostMapping(value= {"/nuevo"})
-	public String nuevo(@RequestParam(name="nombre") String nombre,
-						@RequestParam(name="codbarras") long codbarras,
-						@RequestParam(name="descrip") String descrip,
-						@RequestParam(name="tipoarticulo") String desctipoarticulo
-			           ) {
+	public String nuevo(@RequestParam String nombre,
+						@RequestParam long codbarras,
+						@RequestParam String descrip,
+						@RequestParam String desctipoarticulo
+			    ) {
 		
 		//Se recoge la información del nuevo artículo en su objeto.
 		Articulo objArticulo = new Articulo();
